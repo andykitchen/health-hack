@@ -147,6 +147,12 @@ d3.json("normalized_data.json", function(error, data) {
 
     circles.exit()
       .remove()
+
+    var selected_circle = right_column.select("circle.selected")
+    if(!selected_circle.empty()) {
+      var node = selected_circle.node()
+      node.parentNode.appendChild(node)
+    }
   };
 
   var line = function(key) {
