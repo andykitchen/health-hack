@@ -74,7 +74,6 @@ d3.json("normalized_data.json", function(error, data) {
       .orient("top");
 
   var zoomed = function() {
-    console.log("zoomed")
     var sections = container.selectAll("g.section").data(indicies)
 
     sections.enter()
