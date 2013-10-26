@@ -26,3 +26,8 @@ body {
 .box {
   display: block;
 }
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
