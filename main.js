@@ -12,7 +12,8 @@ var axis_svg = d3.select("body").append("svg");
 
 svg
   .attr("height", 0)
-  .attr("width",  width);
+  .attr("width",  width)
+  .attr("class", "main");
 
 axis_svg
   .attr("width",  width)
@@ -64,7 +65,6 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("y", i * section_height)
       .attr("width", right_column_width)
       .attr("height", section_height)
-      .attr("fill", "#aaf")
       .on("click", function() { current_sample = null; zoomed() })
   }
 
@@ -98,7 +98,7 @@ d3.json("normalized_data.json", function(error, data) {
 
   var zoom = d3.behavior.zoom()
     .x(section_x)
-    .scaleExtent([1, 20])
+    .scaleExtent([1, 30])
     .on("zoom", zoomed)
 
   container
@@ -136,12 +136,13 @@ d3.json("normalized_data.json", function(error, data) {
     circles.enter()
       .append("circle")
       .attr("r", 5)
+      .attr("class", "sample-point")
       .on("click", function(d) { current_sample = d.key; zoomed() })
 
     circles
       .attr("cx", function(d) { return section_x(d.val) })
       .attr("cy", section_height / 2)
-      .attr("fill", function(d) { return d.key == current_sample ? "red" : "black" })
+      .attr("class", function(d) { return d.key == current_sample ? "selected" : "" })
       .attr("opacity", function(d) { return d.key == current_sample ? 1 : 0.2 })
 
     circles.exit()
