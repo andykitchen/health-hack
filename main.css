@@ -14,7 +14,7 @@ svg.main {
 }
 
 .label {
-  fill: #fff;
+  fill: #ddd;
 }
 
 .axis {
@@ -22,7 +22,7 @@ svg.main {
 }
 
 .axis text {
-  fill: #eee;
+  fill: #ddd;
 }
 
 .box {

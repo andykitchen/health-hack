@@ -1,6 +1,6 @@
 (function() {
 
-var width = 800;
+var width = 1024;
 
 var section_height = 20;
 var left_column_width = 0;
