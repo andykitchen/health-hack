@@ -22,3 +22,7 @@ body {
   fill: none;
   stroke: #ccc;
 }
+
+.box {
+  display: block;
+}

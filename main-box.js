@@ -30,10 +30,12 @@ d3.csv("morley.csv", function(error, csv) {
       .data(data)
     .enter().append("svg")
       .attr("class", "box")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.bottom + margin.top)
+      // .attr("width", width + margin.left + margin.right)
+      // .attr("height", height + margin.bottom + margin.top)
+      .attr("height", width + margin.left + margin.right)
+      .attr("width", height + margin.bottom + margin.top)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .attr("transform", "rotate(90) " + "translate(0,"+(-height)+") " + "translate(" + margin.left + "," + margin.top + ")")
       .call(chart);
 
   // setInterval(function() {
