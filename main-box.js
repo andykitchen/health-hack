@@ -10,19 +10,12 @@ var chart = d3.box()
     .width(width)
     .height(height);
 
-d3.csv("morley.csv", function(error, csv) {
-  var data = [];
-
-  csv.forEach(function(x) {
-    var e = Math.floor(x.Expt - 1),
-        r = Math.floor(x.Run - 1),
-        s = Math.floor(x.Speed),
-        d = data[e];
-    if (!d) d = data[e] = [s];
-    else d.push(s);
-    if (s > max) max = s;
-    if (s < min) min = s;
-  });
+d3.json("dummy.json", function(error, json) {
+  var samples = json.samples
+  var data = _.values(samples)
+  var samples_flat = _.flatten(_.values(samples))
+  var min = _.min(samples_flat)
+  var max = _.max(samples_flat)
 
   chart.domain([min, max]);
 
