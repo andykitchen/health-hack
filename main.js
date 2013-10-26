@@ -56,7 +56,7 @@ d3.json("normalized_data.json", function(error, data) {
     .attr("x", left_column_width)
     .attr("width", right_column_width)
     .attr("height", height)
-    .on("click", function() { current_sample = null; zoomed() })
+    .on("click", function() { current_sample = null; redraw() })
 
   var highlights = container.append("g")
   for(var i = 0; i < section_count; i = i + 2) {
@@ -65,7 +65,7 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("y", i * section_height)
       .attr("width", right_column_width)
       .attr("height", section_height)
-      .on("click", function() { current_sample = null; zoomed() })
+      .on("click", function() { current_sample = null; redraw() })
   }
 
   var xAxis = d3.svg.axis()
@@ -73,7 +73,7 @@ d3.json("normalized_data.json", function(error, data) {
       .tickSize(-height)
       .orient("top");
 
-  var zoomed = function() {
+  var redraw = function() {
     var sections = container.selectAll("g.section").data(indicies)
 
     sections.enter()
@@ -98,7 +98,7 @@ d3.json("normalized_data.json", function(error, data) {
   var zoom = d3.behavior.zoom()
     .x(section_x)
     .scaleExtent([1, 30])
-    .on("zoom", zoomed)
+    .on("zoom", redraw)
 
   container
     .call(zoom)
@@ -136,7 +136,7 @@ d3.json("normalized_data.json", function(error, data) {
       .append("circle")
       .attr("r", 5)
       .attr("class", "sample-point")
-      .on("click", function(d) { current_sample = d.key; zoomed() })
+      .on("click", function(d) { current_sample = d.key; redraw() })
 
     circles
       .attr("cx", function(d) { return section_x(d.val) })
@@ -174,7 +174,7 @@ d3.json("normalized_data.json", function(error, data) {
     }
   }
 
-  zoomed()
+  redraw()
 })
 
 }());
