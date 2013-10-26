@@ -56,7 +56,7 @@ d3.json("normalized_data.json", function(error, data) {
     .attr("x", left_column_width)
     .attr("width", right_column_width)
     .attr("height", height)
-    .on("click", function() { current_sample = null; redraw() })
+    .on("dblclick", function() { current_sample = null; redraw() })
 
   var highlights = container.append("g")
   for(var i = 0; i < section_count; i = i + 2) {
@@ -65,7 +65,7 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("y", i * section_height)
       .attr("width", right_column_width)
       .attr("height", section_height)
-      .on("click", function() { current_sample = null; redraw() })
+      .on("dblclick", function() { current_sample = null; redraw() })
   }
 
   var xAxis = d3.svg.axis()
