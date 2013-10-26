@@ -2,7 +2,7 @@
 
 var width = 800;
 
-var section_height = 50;
+var section_height = 35;
 var left_column_width = 0;
 var left_column_initial_offset = 200;
 var right_column_width = width - left_column_width;
@@ -15,6 +15,7 @@ svg
 
 d3.json("normalized_data.json", function(error, data) {
   var section_count = Math.min(50, data.start.length);
+  // var section_count = data.start.length;
 
   var gene = data.gene;
   var indicies = d3.range(section_count);
@@ -32,7 +33,7 @@ d3.json("normalized_data.json", function(error, data) {
   svg.attr("height", height);
 
   var section_x = d3.scale.linear()
-    .domain([min, max])
+    .domain([min, max/2])
     .range([left_column_initial_offset, right_column_width])
 
   var container = svg
@@ -54,6 +55,8 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("fill", "#aaf")
   }
 
+  var current_sample = "samp_19"
+
   var zoomed = function() {
     console.log("zoomed")
     var sections = container.selectAll("g.section").data(indicies)
@@ -64,11 +67,13 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
 
     sections.each(samples)
+
+    line(current_sample)
   }
 
   var zoom = d3.behavior.zoom()
     .x(section_x)
-    .scaleExtent([1, 8])
+    .scaleExtent([1, 20])
     .on("zoom", zoomed)
 
   container.call(zoom)
@@ -102,7 +107,8 @@ d3.json("normalized_data.json", function(error, data) {
 
     circles.enter()
       .append("circle")
-      .attr("r", 3)
+      .attr("r", 5)
+      .attr("opacity", 0.2)
 
     circles
       .attr("cx", section_x)
@@ -111,6 +117,23 @@ d3.json("normalized_data.json", function(error, data) {
     circles.exit()
       .remove()
   };
+
+  var line = function(key) {
+    var lineFunction = d3.svg.line()
+      .x(function(d) { return section_x(d) })
+      .y(function(d, i) { return section_height * (i + 0.5) })
+      .interpolate("linear");
+
+    var path = container.select("path.pick-line")
+    if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
+
+    path
+      .datum(data.samples[key])
+      .attr("d", lineFunction)
+      .attr("stroke", "red")
+      .attr("fill", "none")
+      .attr("stroke-width", "2px")
+  }
 
   zoomed()
 })
