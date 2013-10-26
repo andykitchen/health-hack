@@ -153,7 +153,7 @@ d3.json("normalized_data.json", function(error, data) {
     var lineFunction = d3.svg.line()
       .x(function(d) { return section_x(d) })
       .y(function(d, i) { return section_height * (i + 0.5) })
-      .interpolate("linear");
+      .interpolate("cardinal");
 
     var path = container.select("path.pick-line")
     if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
