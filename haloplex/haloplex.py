@@ -5,7 +5,11 @@ import os
 
 data = json.load(open('data/normalized_data.json', 'r'))
 
-app = Flask(__name__)
+class MyFlask(Flask):
+  def get_send_file_max_age(self, name):
+    return 0
+
+app = MyFlask(__name__)
 app.config.from_object(__name__)
 
 @app.route('/')
