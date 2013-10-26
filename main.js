@@ -2,16 +2,21 @@
 
 var width = 800;
 
-var section_height = 35;
+var section_height = 20;
 var left_column_width = 0;
 var left_column_initial_offset = 200;
 var right_column_width = width - left_column_width;
 
 var svg = d3.select("body").append("svg");
+var axis_svg = d3.select("body").append("svg");
 
 svg
   .attr("height", 0)
   .attr("width",  width);
+
+axis_svg
+  .attr("width",  width)
+  .attr("class", "axis");
 
 d3.json("normalized_data.json", function(error, data) {
   var section_count = Math.min(50, data.start.length);
@@ -26,7 +31,9 @@ d3.json("normalized_data.json", function(error, data) {
 
   var samples_data = []
   _.each(indicies, function(id) {
-    samples_data[id] = _.pluck(data.samples, id)
+    samples_data[id] = _.map(data.samples, function(val, key) {
+      return { key: key, val: val[id] }
+    })
   })
 
   var height = section_height * section_count;
@@ -37,6 +44,10 @@ d3.json("normalized_data.json", function(error, data) {
     .range([left_column_initial_offset, right_column_width])
 
   var container = svg
+    .append("g")
+    .attr("transform", "translate(0,20)")
+
+  var current_sample = null
 
   container
     .append("rect")
@@ -44,6 +55,7 @@ d3.json("normalized_data.json", function(error, data) {
     .attr("x", left_column_width)
     .attr("width", right_column_width)
     .attr("height", height)
+    .on("click", function() { current_sample = null; zoomed() })
 
   var highlights = container.append("g")
   for(var i = 0; i < section_count; i = i + 2) {
@@ -53,9 +65,13 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("width", right_column_width)
       .attr("height", section_height)
       .attr("fill", "#aaf")
+      .on("click", function() { current_sample = null; zoomed() })
   }
 
-  var current_sample = "samp_19"
+  var xAxis = d3.svg.axis()
+      .scale(section_x)
+      .tickSize(-height)
+      .orient("top");
 
   var zoomed = function() {
     console.log("zoomed")
@@ -67,8 +83,17 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
 
     sections.each(samples)
-
     line(current_sample)
+
+    var axis_group = axis_svg.select("g.axis")
+    if(axis_group.empty()) {
+      axis_group = axis_svg
+        .append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0,20)")
+    }
+
+    axis_group.call(xAxis);
   }
 
   var zoom = d3.behavior.zoom()
@@ -76,7 +101,9 @@ d3.json("normalized_data.json", function(error, data) {
     .scaleExtent([1, 20])
     .on("zoom", zoomed)
 
-  container.call(zoom)
+  container
+    .call(zoom)
+    .on("dblclick.zoom", null)
 
   var samples = function(id, i) {
     var elem = d3.select(this);
@@ -87,6 +114,7 @@ d3.json("normalized_data.json", function(error, data) {
       elem
         .append("text")
         .attr("class", "label")
+        .attr("dy", "0.5ex")
         .text(gene[id])
         .attr("y", section_height / 2);
     }
@@ -108,11 +136,13 @@ d3.json("normalized_data.json", function(error, data) {
     circles.enter()
       .append("circle")
       .attr("r", 5)
-      .attr("opacity", 0.2)
+      .on("click", function(d) { current_sample = d.key; zoomed() })
 
     circles
-      .attr("cx", section_x)
-      .attr("cy", section_height / 2);
+      .attr("cx", function(d) { return section_x(d.val) })
+      .attr("cy", section_height / 2)
+      .attr("fill", function(d) { return d.key == current_sample ? "red" : "black" })
+      .attr("opacity", function(d) { return d.key == current_sample ? 1 : 0.2 })
 
     circles.exit()
       .remove()
@@ -127,12 +157,16 @@ d3.json("normalized_data.json", function(error, data) {
     var path = container.select("path.pick-line")
     if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
 
-    path
-      .datum(data.samples[key])
-      .attr("d", lineFunction)
-      .attr("stroke", "red")
-      .attr("fill", "none")
-      .attr("stroke-width", "2px")
+    if(key) {
+      path
+        .datum(data.samples[key])
+        .attr("d", lineFunction)
+        .attr("stroke", "red")
+        .attr("fill", "none")
+        .attr("stroke-width", "2px")
+    } else {
+      path.remove()
+    }
   }
 
   zoomed()
