@@ -143,7 +143,6 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("cx", function(d) { return section_x(d.val) })
       .attr("cy", section_height / 2)
       .attr("class", function(d) { return d.key == current_sample ? "selected" : "" })
-      .attr("opacity", function(d) { return d.key == current_sample ? 1 : 0.2 })
 
     circles.exit()
       .remove()
