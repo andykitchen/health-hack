@@ -6,7 +6,7 @@ import json
 sample_names = [ 'samp_{0:02d}'.format(x) for x in range(48) ]
 
 coverage = pandas.read_table(
-    '../131004_SN1055_0174_BC2GHAACXX_targetbases_coverage',
+    '../../131004_SN1055_0174_BC2GHAACXX_targetbases_coverage',
     # 'testdata',
     names=['chr', 'start', 'end'] + sample_names + [ 'rgn_chr', 'rgn_start', 'rgn_end', 'rgn_gene', 'rgn_bases' ])
 
