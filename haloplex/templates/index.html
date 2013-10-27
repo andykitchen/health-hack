@@ -11,8 +11,26 @@
     <script src="static/js/main.js"></script>
     <div id="search-form">
       <form action="/" method="GET">
-        <label>Z-Score</label>
-        <input type="text" name="z-score"/>
+        <fieldset>
+          <label>Z-Score</label>
+          <input id="z-score" type="text" name="x"/>
+        </fieldset>
+        <fieldset>
+          <label>Row Limit</label>
+          <input id="row-limit" type="text" name="c"/>
+        </fieldset>
+        <fieldset>
+          <label>Row Offset</label>
+          <input id="row-offset" type="text" name="s"/>
+        </fieldset>
+        <fieldset>
+          <label>Order</label>
+          <input id="order" type="text" name="o"/>
+        </fieldset>
+        <fieldset>
+          <label>Samples</label>
+          <input id="samples" type="text" name="i"/>
+        </fieldset>
         <input type="submit" />
       </form>
     </div>
