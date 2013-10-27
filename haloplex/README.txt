@@ -9,3 +9,8 @@ $ python haloplex.py
  * Restarting with reloader
 
 
+/data/ordered now returns unordered data
+  ?o=asc gives you ascending
+  ?o=desc descending
+  ?s=10 starts at gene 10
+  ?c=10 gives you only 10
