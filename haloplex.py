@@ -93,7 +93,7 @@ def ordered():
   if order == 'asc':
     sort_order = samples.index[samples.mean(axis=1).argsort()]
   elif order == 'desc':
-    sort_order = samples.index[reversed(samples.mean(axis=1).argsort())]
+    sort_order = samples.index[list(reversed(samples.mean(axis=1).argsort()))]
   else:
     sort_order = metadata.index
 
