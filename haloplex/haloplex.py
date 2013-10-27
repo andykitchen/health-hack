@@ -26,7 +26,7 @@ def build_data(metadata_rows, sample_rows):
     chr = list(metadata_rows.chr),
     start = list(metadata_rows.start),
     end = list(metadata_rows.end),
-    gene = list(metadata_rows.end),
+    gene = list(metadata_rows.gene),
     samples = { k:list(sample_rows[k]) for k in sorted(sample_rows.columns) }
   )
 
