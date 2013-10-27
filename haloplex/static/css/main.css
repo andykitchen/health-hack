@@ -142,3 +142,8 @@ svg.axis {
 #row-count {
   padding-top: 10px;
 }
+
+#title {
+  color: #EEE;
+  padding-left: 10px;
+}
