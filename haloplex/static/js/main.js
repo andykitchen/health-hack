@@ -110,6 +110,7 @@ d3.json(data_url, function(error, data) {
       .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
 
     sections.each(samples)
+    line(current_sample)
 
     var section_labels = section_labels_group.selectAll("g.section-label").data(indicies)
 
@@ -192,6 +193,24 @@ d3.json(data_url, function(error, data) {
       node.parentNode.appendChild(node)
     }
   };
+
+  var line = function(key) {
+    var lineFunction = d3.svg.line()
+      .x(function(d) { return section_x(d) })
+      .y(function(d, i) { return section_height * (i + 0.5) })
+      .interpolate("cardinal");
+
+    var path = container.select("path.pick-line")
+    if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
+
+    if(key) {
+      path
+        .datum(data.samples[key])
+        .attr("d", lineFunction)
+    } else {
+      path.remove()
+    }
+  }
 
   redraw()
 })
