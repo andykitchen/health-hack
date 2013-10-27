@@ -96,7 +96,7 @@ svg.axis {
 
 .pick-line {
   fill: none;
-  stroke: red;
+  /* stroke: red; */
   stroke-width: 2px;
   opacity: 0.75;
 }

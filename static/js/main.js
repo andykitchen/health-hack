@@ -68,7 +68,7 @@ d3.json(data_url, function(error, data) {
     .append("g")
     .attr("transform", "translate(0,"+top_padding+")")
 
-  var current_sample = null
+  var current_sample = []
 
   container
     .append("rect")
@@ -76,7 +76,7 @@ d3.json(data_url, function(error, data) {
     .attr("x", left_column_width)
     .attr("width", right_column_width)
     .attr("height", height)
-    .on("dblclick", function() { current_sample = null; redraw() })
+    .on("dblclick", function() { current_sample = []; redraw() })
 
   var highlights = container.append("g")
   for(var i = 0; i < section_count; i = i + 2) {
@@ -85,7 +85,7 @@ d3.json(data_url, function(error, data) {
       .attr("y", i * section_height)
       .attr("width", right_column_width)
       .attr("height", section_height)
-      .on("dblclick", function() { current_sample = null; redraw() })
+      .on("dblclick", function() { current_sample = []; redraw() })
   }
 
   var xAxis = d3.svg.axis()
@@ -114,11 +114,7 @@ d3.json(data_url, function(error, data) {
 
     sections.each(samples)
 
-    if(current_sample) {
-      line([current_sample])
-    } else {
-      line(null)
-    }
+    line(current_sample)
 
     var section_labels = section_labels_group.selectAll("g.section-label").data(indicies)
 
@@ -191,12 +187,12 @@ d3.json(data_url, function(error, data) {
       .append("circle")
       .attr("r", 5)
       .attr("class", "sample-point")
-      .on("click", function(d) { current_sample = d.key; redraw(); $('#selected-sample').text(current_sample); })
+      .on("click", function(d) { current_sample.push(d.key); redraw() })
 
     circles
       .attr("cx", function(d) { return section_x(d.val) })
       .attr("cy", section_height / 2)
-      .attr("class", function(d) { return d.key == current_sample ? "selected" : "" })
+      .attr("class", function(d) { return _.contains(current_sample, d.key) ? "selected" : "" })
 
     circles.exit()
       .remove()
@@ -225,6 +221,7 @@ d3.json(data_url, function(error, data) {
 
     path
       .attr("d", function(key) { return lineFunction(data.samples[key]) } )
+      .attr("class", function(d, i) { return "pick-line l_"+(i%32) })
 
     path
       .exit()
@@ -232,6 +229,7 @@ d3.json(data_url, function(error, data) {
   }
 
   redraw()
+  line(["samp_10", "samp_11"])
 })
 
 
