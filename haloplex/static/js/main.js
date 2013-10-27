@@ -71,11 +71,6 @@ d3.json(data_url, function(error, data) {
       .on("dblclick", function() { current_sample = null; redraw() })
   }
 
-  container.append("rect")
-    .attr("class", "fader")
-    .attr("width", left_column_fader_width)
-    .attr("height", height)
-
   var xAxis = d3.svg.axis()
       .scale(section_x)
       .tickSize(-height)
@@ -161,6 +156,11 @@ d3.json(data_url, function(error, data) {
   };
 
   redraw()
+
+  container.append("rect")
+    .attr("class", "fader")
+    .attr("width", left_column_fader_width)
+    .attr("height", height)
 })
 
 }());

@@ -93,6 +93,10 @@ svg.axis {
   opacity: 0.5;
 }
 
+.fader {
+  fill: url(#fader-gradient);
+}
+
 #search-form {
   padding: 20px;
   float: right;
