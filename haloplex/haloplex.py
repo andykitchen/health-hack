@@ -3,8 +3,15 @@ from flask import *
 import sys
 import os
 import pandas
+import sys
 
-data = json.load(open('data/normalized_data.json', 'r'))
+
+if len(sys.argv) > 1:
+  data_path = sys.argv[1]
+else:
+  data_path = 'data/normalized_data.json'
+
+data = json.load(open(data_path, 'r'))
 
 metadata = pandas.DataFrame(data, columns = [ 'chr', 'start', 'end', 'gene' ])
 samples = pandas.DataFrame(data['samples'], columns = sorted(data['samples'].keys()))
