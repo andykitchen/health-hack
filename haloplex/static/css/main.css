@@ -105,9 +105,29 @@ svg.axis {
 #search-form {
   padding: 20px;
   float: right;
+  text-align: right;
 }
 
-#samples {
-  width: 150px;
+#search-form fieldset {
+  border-color: transparent;
+}
+
+#search-form label {
+  text-align: left;
+  color: white;
+  margin-right: 10px;
+}
+
+#search-form input {
+  width: 175px;
+}
+
+#search-form select {
+  width: 175px;
+  text-align: left;
+}
+
+#search-form input[type="submit"] {
+  margin-right: 15px;
 }
 
