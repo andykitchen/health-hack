@@ -186,7 +186,7 @@ d3.json(data_url, function(error, data) {
       .append("circle")
       .attr("r", 5)
       .attr("class", "sample-point")
-      .on("click", function(d) { current_sample = d.key; redraw() })
+      .on("click", function(d) { current_sample = d.key; redraw(); $('#selected-sample').text(current_sample); })
 
     circles
       .attr("cx", function(d) { return section_x(d.val) })

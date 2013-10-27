@@ -151,3 +151,7 @@ svg.axis {
 #row-offset {
   width: 80px !important;
 }
+
+#selected-sample {
+  color: red;
+}
