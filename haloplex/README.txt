@@ -30,11 +30,13 @@ returns:
 
 /data/ordered    -> dataset as json
 query params:
-  ?o={desc|asc} order data by mean coverage (descending or ascending)
-  ?c=num        return only num rows
-  ?s=num        offset by num rows (after sorting)
-  ?x=zscore     z-score transform data before returning (after sorting)
-  ?i=samp,samp  limit result to a subset of samples (full dataset is still used for sorting)
+  ?o={desc|asc}     order data by mean coverage (descending or ascending)
+  ?c=num            return only num rows
+  ?s=num            offset by num rows (after sorting)
+  ?x=zscore         z-score transform data before returning (after sorting)
+  ?i=samp,samp      limit result to a subset of samples (full dataset is still used for sorting)
+  ?r=chr            limit to chromosome = chr
+  ?r=chr:start-end  limit to chromosome chr, between start and end
 
 returns:
 {
