@@ -9,7 +9,10 @@ function transform_url() {
 }
 
 function set_default_form_values() {
-  $('#z-score').val( $.url().param("x") );
+  if ($.url().param("x") == "zscore") {
+    $('#z-score').prop("checked", "checked");
+  }
+
   $('#row-limit').val( $.url().param("c") );
   $('#row-offset').val( $.url().param("s") );
   $('#order').val( $.url().param("o") );

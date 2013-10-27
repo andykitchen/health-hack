@@ -15,11 +15,19 @@
       <form action="/" method="GET">
         <fieldset>
           <label>Z-Score</label>
-          <input id="z-score" type="text" name="x"/>
+          <input id="z-score" type="checkbox" name="x" value="zscore" />
         </fieldset>
         <fieldset>
           <label>Row Limit</label>
-          <input id="row-limit" type="text" name="c"/>
+          <select id="row-limit" name="c">
+            <option value=""></option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="500">500</option>
+          </select>
         </fieldset>
         <fieldset>
           <label>Row Offset</label>
