@@ -92,3 +92,8 @@ svg.axis {
   stroke-width: 2px;
   opacity: 0.5;
 }
+
+#search-form {
+  padding: 20px;
+  float: right;
+}
