@@ -56,12 +56,12 @@ d3.json(data_url, function(error, data) {
 
   fader_gradient.append("stop")
     .attr("offset", "0%")
-    .attr("stop-color", "#000")
+    .attr("stop-color", "#104")
     .attr("stop-opacity", "1")
 
   fader_gradient.append("stop")
     .attr("offset", "100%")
-    .attr("stop-color", "#000")
+    .attr("stop-color", "#104")
     .attr("stop-opacity", "0")
 
   var container = svg
@@ -94,6 +94,8 @@ d3.json(data_url, function(error, data) {
       .orient("top");
 
   var section_group = container.append("g").attr("class", "sections")
+
+  var line_group = container.append("g").attr("class", "pick-line")
 
   container.append("rect")
     .attr("class", "fader")
@@ -207,8 +209,8 @@ d3.json(data_url, function(error, data) {
       .y(function(d, i) { return section_height * (i + 0.5) })
       .interpolate("cardinal");
 
-    var path = container.select("path.pick-line")
-    if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
+    var path = line_group.select("path.pick-line")
+    if(path.empty()) { path = line_group.append("path").attr("class", "pick-line") }
 
     if(key) {
       path
