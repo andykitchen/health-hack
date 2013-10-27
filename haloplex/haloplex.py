@@ -34,6 +34,14 @@ def build_data(metadata_rows, sample_rows):
 def index_html():
   return render_template('index.html')
 
+@app.route('/data/count')
+def count():
+  return jsonify(count=len(metadata.chr))
+
+@app.route('/data/sample_ids')
+def sample_ids():
+  return jsonify(sample_ids=list(samples.columns))
+
 @app.route('/data/ordered')
 def ordered():
   def maybe_int(x):
