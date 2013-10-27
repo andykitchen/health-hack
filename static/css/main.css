@@ -78,7 +78,7 @@ svg.main {
 
 svg.axis {
   position: fixed;
-  top: 80;
+  top: 0;
   left: 0;
   height: 100%;
   pointer-events: none;
@@ -112,7 +112,7 @@ svg.axis {
 
 #search-form {
   color: #EEE;
-  padding: 20px;
+  padding-right: 30px;
   float: right;
   text-align: right;
 }
@@ -146,4 +146,8 @@ svg.axis {
 #title {
   color: #EEE;
   padding-left: 10px;
+}
+
+#row-offset {
+  width: 80px !important;
 }
