@@ -1,6 +1,6 @@
 (function() {
 
-var width = 1024;
+var width = 800;
 
 var section_height = 20;
 var left_column_width = 0;
@@ -166,9 +166,6 @@ d3.json("normalized_data.json", function(error, data) {
       path
         .datum(data.samples[key])
         .attr("d", lineFunction)
-        .attr("stroke", "red")
-        .attr("fill", "none")
-        .attr("stroke-width", "2px")
     } else {
       path.remove()
     }
