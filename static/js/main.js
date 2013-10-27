@@ -212,6 +212,7 @@ d3.json(data_url, function(error, data) {
 
   var line = function(keys) {
     if(!keys) return
+    $("#selected-sample").text(keys.sort().join(", "))
 
     var lineFunction = d3.svg.line()
       .x(function(d) { return section_x(d) })
@@ -235,7 +236,6 @@ d3.json(data_url, function(error, data) {
   }
 
   redraw()
-  line(["samp_10", "samp_11"])
 })
 
 

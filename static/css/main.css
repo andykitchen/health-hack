@@ -217,5 +217,6 @@ svg.axis {
 .c_31 { fill: #ff150a !important; }
 
 #selected-sample {
+  width: 400px;
   color: red;
 }
