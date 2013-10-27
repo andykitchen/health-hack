@@ -36,7 +36,28 @@ def index_html():
 
 @app.route('/data/ordered')
 def ordered():
-  sort_order = samples.mean(axis=1).argsort()
+  def maybe_int(x):
+    try:
+      return int(x)
+    except:
+      return x
+
+  order = request.args.get('o', None)
+  start = maybe_int(request.args.get('s', None))
+  count = maybe_int(request.args.get('c', None))
+
+  if order == 'asc':
+    sort_order = list(samples.mean(axis=1).argsort())
+  elif order == 'desc':
+    sort_order = list(reversed(samples.mean(axis=1).argsort()))
+  else:
+    sort_order = range(len(metadata.chr))
+
+  if start is not None:
+    sort_order = sort_order[start:]
+  if count is not None:
+    sort_order = sort_order[:count]
+
   return jsonify(build_data(metadata.ix[sort_order], samples.ix[sort_order]))
 
 @app.route('/normalized_data.json')
