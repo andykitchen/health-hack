@@ -5,6 +5,14 @@ body {
   background: #222;
 }
 
+#content {
+  width: 100%;
+}
+
+#main_visual {
+  float: left;
+}
+
 svg.main {
   background: #222;
 }
@@ -70,7 +78,7 @@ svg.main {
 
 svg.axis {
   position: fixed;
-  top: 0;
+  top: 80;
   left: 0;
   height: 100%;
   pointer-events: none;
@@ -103,6 +111,7 @@ svg.axis {
 }
 
 #search-form {
+  color: #EEE;
   padding: 20px;
   float: right;
   text-align: right;
@@ -114,7 +123,6 @@ svg.axis {
 
 #search-form label {
   text-align: left;
-  color: white;
   margin-right: 10px;
 }
 
@@ -131,3 +139,11 @@ svg.axis {
   margin-right: 15px;
 }
 
+#row-count {
+  padding-top: 10px;
+}
+
+#title {
+  color: #EEE;
+  padding-left: 10px;
+}
