@@ -152,70 +152,70 @@ svg.axis {
   width: 80px !important;
 }
 
-.l_0 { stroke: #7f00ff; }
-.c_0 { fill: #7f00ff; }
-.l_1 { stroke: #6f19fe; }
-.c_1 { fill: #6f19fe; }
-.l_2 { stroke: #5f31fd; }
-.c_2 { fill: #5f31fd; }
-.l_3 { stroke: #4f4afc; }
-.c_3 { fill: #4f4afc; }
-.l_4 { stroke: #3f61fa; }
-.c_4 { fill: #3f61fa; }
-.l_5 { stroke: #2f78f7; }
-.c_5 { fill: #2f78f7; }
-.l_6 { stroke: #1f8ef3; }
-.c_6 { fill: #1f8ef3; }
-.l_7 { stroke: #0fa2ef; }
-.c_7 { fill: #0fa2ef; }
-.l_8 { stroke: #00b4eb; }
-.c_8 { fill: #00b4eb; }
-.l_9 { stroke: #10c5e6; }
-.c_9 { fill: #10c5e6; }
-.l_10 { stroke: #20d4e0; }
-.c_10 { fill: #20d4e0; }
-.l_11 { stroke: #30e1da; }
-.c_11 { fill: #30e1da; }
-.l_12 { stroke: #40ecd3; }
-.c_12 { fill: #40ecd3; }
-.l_13 { stroke: #50f4cc; }
-.c_13 { fill: #50f4cc; }
-.l_14 { stroke: #60fac4; }
-.c_14 { fill: #60fac4; }
-.l_15 { stroke: #70fdbc; }
-.c_15 { fill: #70fdbc; }
-.l_16 { stroke: #80feb3; }
-.c_16 { fill: #80feb3; }
-.l_17 { stroke: #90fdaa; }
-.c_17 { fill: #90fdaa; }
-.l_18 { stroke: #a0f9a1; }
-.c_18 { fill: #a0f9a1; }
-.l_19 { stroke: #b0f397; }
-.c_19 { fill: #b0f397; }
-.l_20 { stroke: #c0ea8c; }
-.c_20 { fill: #c0ea8c; }
-.l_21 { stroke: #d0df82; }
-.c_21 { fill: #d0df82; }
-.l_22 { stroke: #e0d277; }
-.c_22 { fill: #e0d277; }
-.l_23 { stroke: #f0c36c; }
-.c_23 { fill: #f0c36c; }
-.l_24 { stroke: #ffb260; }
-.c_24 { fill: #ffb260; }
-.l_25 { stroke: #ff9f54; }
-.c_25 { fill: #ff9f54; }
-.l_26 { stroke: #ff8b48; }
-.c_26 { fill: #ff8b48; }
-.l_27 { stroke: #ff753c; }
-.c_27 { fill: #ff753c; }
-.l_28 { stroke: #ff5f30; }
-.c_28 { fill: #ff5f30; }
-.l_29 { stroke: #ff4724; }
-.c_29 { fill: #ff4724; }
-.l_30 { stroke: #ff2e17; }
-.c_30 { fill: #ff2e17; }
-.l_31 { stroke: #ff150a; }
-.c_31 { fill: #ff150a; }
+.l_0 { stroke: #7f00ff; !important; }
+.c_0 { fill: #7f00ff; !important; }
+.l_1 { stroke: #6f19fe; !important; }
+.c_1 { fill: #6f19fe; !important; }
+.l_2 { stroke: #5f31fd; !important; }
+.c_2 { fill: #5f31fd; !important; }
+.l_3 { stroke: #4f4afc; !important; }
+.c_3 { fill: #4f4afc; !important; }
+.l_4 { stroke: #3f61fa; !important; }
+.c_4 { fill: #3f61fa; !important; }
+.l_5 { stroke: #2f78f7; !important; }
+.c_5 { fill: #2f78f7; !important; }
+.l_6 { stroke: #1f8ef3; !important; }
+.c_6 { fill: #1f8ef3; !important; }
+.l_7 { stroke: #0fa2ef; !important; }
+.c_7 { fill: #0fa2ef; !important; }
+.l_8 { stroke: #00b4eb; !important; }
+.c_8 { fill: #00b4eb; !important; }
+.l_9 { stroke: #10c5e6; !important; }
+.c_9 { fill: #10c5e6; !important; }
+.l_10 { stroke: #20d4e0; !important; }
+.c_10 { fill: #20d4e0; !important; }
+.l_11 { stroke: #30e1da; !important; }
+.c_11 { fill: #30e1da; !important; }
+.l_12 { stroke: #40ecd3; !important; }
+.c_12 { fill: #40ecd3; !important; }
+.l_13 { stroke: #50f4cc; !important; }
+.c_13 { fill: #50f4cc; !important; }
+.l_14 { stroke: #60fac4; !important; }
+.c_14 { fill: #60fac4; !important; }
+.l_15 { stroke: #70fdbc; !important; }
+.c_15 { fill: #70fdbc; !important; }
+.l_16 { stroke: #80feb3; !important; }
+.c_16 { fill: #80feb3; !important; }
+.l_17 { stroke: #90fdaa; !important; }
+.c_17 { fill: #90fdaa; !important; }
+.l_18 { stroke: #a0f9a1; !important; }
+.c_18 { fill: #a0f9a1; !important; }
+.l_19 { stroke: #b0f397; !important; }
+.c_19 { fill: #b0f397; !important; }
+.l_20 { stroke: #c0ea8c; !important; }
+.c_20 { fill: #c0ea8c; !important; }
+.l_21 { stroke: #d0df82; !important; }
+.c_21 { fill: #d0df82; !important; }
+.l_22 { stroke: #e0d277; !important; }
+.c_22 { fill: #e0d277; !important; }
+.l_23 { stroke: #f0c36c; !important; }
+.c_23 { fill: #f0c36c; !important; }
+.l_24 { stroke: #ffb260; !important; }
+.c_24 { fill: #ffb260; !important; }
+.l_25 { stroke: #ff9f54; !important; }
+.c_25 { fill: #ff9f54; !important; }
+.l_26 { stroke: #ff8b48; !important; }
+.c_26 { fill: #ff8b48; !important; }
+.l_27 { stroke: #ff753c; !important; }
+.c_27 { fill: #ff753c; !important; }
+.l_28 { stroke: #ff5f30; !important; }
+.c_28 { fill: #ff5f30; !important; }
+.l_29 { stroke: #ff4724; !important; }
+.c_29 { fill: #ff4724; !important; }
+.l_30 { stroke: #ff2e17; !important; }
+.c_30 { fill: #ff2e17; !important; }
+.l_31 { stroke: #ff150a; !important; }
+.c_31 { fill: #ff150a; !important; }
 
 #selected-sample {
   color: red;
