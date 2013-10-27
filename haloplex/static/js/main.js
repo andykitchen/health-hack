@@ -8,6 +8,7 @@ var left_column_initial_offset = 200;
 var right_column_width = width - left_column_width;
 var left_column_fader_width = 200;
 var left_label_padding = 20;
+var top_padding = 20;
 
 var svg = d3.select("body").append("svg");
 var axis_svg = d3.select("body").append("svg");
@@ -65,7 +66,7 @@ d3.json(data_url, function(error, data) {
 
   var container = svg
     .append("g")
-    .attr("transform", "translate(0,20)")
+    .attr("transform", "translate(0,"+top_padding+")")
 
   var current_sample = null
 
@@ -127,6 +128,12 @@ d3.json(data_url, function(error, data) {
         .append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0,20)")
+
+      axis_group.append("rect")
+        .attr("class", "top-axis-fader")
+        .attr("width", width)
+        .attr("height", top_padding)
+        .attr("y", -top_padding)
     }
 
     axis_group.call(xAxis);

@@ -97,6 +97,11 @@ svg.axis {
   fill: url(#fader-gradient);
 }
 
+.top-axis-fader {
+  fill: black;
+  opacity: 0.5; 
+}
+
 #search-form {
   padding: 20px;
   float: right;
