@@ -192,7 +192,13 @@ d3.json(data_url, function(error, data) {
     circles
       .attr("cx", function(d) { return section_x(d.val) })
       .attr("cy", section_height / 2)
-      .attr("class", function(d) { return _.contains(current_sample, d.key) ? "selected" : "" })
+      .attr("class", function(d) {
+          if(_.contains(current_sample, d.key)) {
+            return "selected " + "c_" + _.indexOf(current_sample, d.key)
+          } else {
+            return ""
+          }
+      })
 
     circles.exit()
       .remove()

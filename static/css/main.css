@@ -90,7 +90,6 @@ svg.axis {
 }
 
 .samples circle.selected {
-  fill: red;
   opacity: 1;
 }
 
