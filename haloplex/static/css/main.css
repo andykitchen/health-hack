@@ -106,3 +106,8 @@ svg.axis {
   padding: 20px;
   float: right;
 }
+
+#samples {
+  width: 150px;
+}
+

@@ -1,5 +1,10 @@
 function transform_url() {
-  sanitized =  _.omit($.url().param(), function(v) { return v == ""});
+  params = $.url().param()
+  if (params["i"]) {
+    params["i"] = params["i"].join(",")
+  }
+  sanitized =  _.omit(params, function(v) { return v == ""});
+  
   return "/data/ordered?" + $.param(sanitized);
 }
 

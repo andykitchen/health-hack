@@ -229,5 +229,15 @@ d3.json(data_url, function(error, data) {
 
 
 $(function() {
+  $.getJSON("/data/sample_ids", function(data) {
+    _.each(data["sample_ids"], function(sample_id) {
+      $("#samples").append('<option value="' + sample_id + '">' + sample_id + '</option>');
+    });
+
+    $('#samples').val( $.url().param("i") );
+    $('#samples').chosen();
+
+  });
+
   set_default_form_values();
 });
