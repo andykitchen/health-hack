@@ -43,6 +43,7 @@ def ordered():
       return x
 
   order = request.args.get('o', None)
+  xform = request.args.get('x', None)
   start = maybe_int(request.args.get('s', None))
   count = maybe_int(request.args.get('c', None))
 
@@ -57,6 +58,12 @@ def ordered():
     sort_order = sort_order[start:]
   if count is not None:
     sort_order = sort_order[:count]
+
+
+  if xform == 'zscore':
+    sample_data = samples.sub(samples.mean(axis=1),axis=0).div(samples.std(axis=1),axis=0)
+  else:
+    sample_data = samples
 
   return jsonify(build_data(metadata.ix[sort_order], samples.ix[sort_order]))
 
