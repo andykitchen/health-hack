@@ -6,6 +6,7 @@ var section_height = 20;
 var left_column_width = 0;
 var left_column_initial_offset = 200;
 var right_column_width = width - left_column_width;
+var left_column_fader_width = 200;
 
 var svg = d3.select("body").append("svg");
 var axis_svg = d3.select("body").append("svg");
@@ -19,9 +20,11 @@ axis_svg
   .attr("width",  width)
   .attr("class", "axis");
 
-d3.json("/data/ordered", function(error, data) {
-  var section_count = Math.min(50, data.start.length);
-  // var section_count = data.start.length;
+var data_url = transform_url(window.location.search);
+data_url = "/data/ordered?o=dsc&c=50&i=samp_01,samp_02";
+
+d3.json(data_url, function(error, data) {
+  var section_count = data.start.length;
 
   var gene = data.gene;
   var indicies = d3.range(section_count);
@@ -67,6 +70,11 @@ d3.json("/data/ordered", function(error, data) {
       .attr("height", section_height)
       .on("dblclick", function() { current_sample = null; redraw() })
   }
+
+  container.append("rect")
+    .attr("class", "fader")
+    .attr("width", left_column_fader_width)
+    .attr("height", height)
 
   var xAxis = d3.svg.axis()
       .scale(section_x)
