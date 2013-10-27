@@ -112,5 +112,8 @@ def return_data():
   return jsonify(data)
 
 if __name__ == '__main__':
-  app.debug=True
-  app.run('0.0.0.0', 5001)
+  try:
+    app.run('0.0.0.0', int(os.environ['PORT']))
+  except KeyError:
+    app.debug=True
+    app.run('0.0.0.0', 5001)
