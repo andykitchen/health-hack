@@ -103,6 +103,7 @@ svg.axis {
 }
 
 #search-form {
+  color: white;
   padding: 20px;
   float: right;
   text-align: right;
@@ -114,7 +115,6 @@ svg.axis {
 
 #search-form label {
   text-align: left;
-  color: white;
   margin-right: 10px;
 }
 
