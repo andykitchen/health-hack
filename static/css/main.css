@@ -98,7 +98,7 @@ svg.axis {
   fill: none;
   stroke: red;
   stroke-width: 2px;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 .fader {
@@ -151,3 +151,36 @@ svg.axis {
 #row-offset {
   width: 80px !important;
 }
+
+.l_0 { stroke: #00007f; }
+.l_1 { stroke: #0000a3; }
+.l_2 { stroke: #0000c8; }
+.l_3 { stroke: #0000ec; }
+.l_4 { stroke: #0000ff; }
+.l_5 { stroke: #0020ff; }
+.l_6 { stroke: #0040ff; }
+.l_7 { stroke: #0060ff; }
+.l_8 { stroke: #0080ff; }
+.l_9 { stroke: #00a0ff; }
+.l_10 { stroke: #00c0ff; }
+.l_11 { stroke: #00e0fa; }
+.l_12 { stroke: #15ffe1; }
+.l_13 { stroke: #2fffc7; }
+.l_14 { stroke: #49ffad; }
+.l_15 { stroke: #63ff93; }
+.l_16 { stroke: #7cff79; }
+.l_17 { stroke: #96ff5f; }
+.l_18 { stroke: #b0ff46; }
+.l_19 { stroke: #caff2c; }
+.l_20 { stroke: #e4ff12; }
+.l_21 { stroke: #feed00; }
+.l_22 { stroke: #ffcf00; }
+.l_23 { stroke: #ffb100; }
+.l_24 { stroke: #ff9400; }
+.l_25 { stroke: #ff7600; }
+.l_26 { stroke: #ff5900; }
+.l_27 { stroke: #ff3b00; }
+.l_28 { stroke: #ff1d00; }
+.l_29 { stroke: #e80000; }
+.l_30 { stroke: #c30000; }
+.l_31 { stroke: #9f0000; }
