@@ -44,11 +44,11 @@ def index_html():
 
 @app.route('/data/count')
 def count():
-  return jsonify(count=len(metadata.chr))
+  return jsonify(count=len(all_samples.index))
 
 @app.route('/data/sample_ids')
 def sample_ids():
-  return jsonify(sample_ids=list(samples.columns))
+  return jsonify(sample_ids=list(all_samples.columns))
 
 @app.route('/data/ordered')
 def ordered():
