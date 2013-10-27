@@ -49,7 +49,7 @@ totals = genecounts.sum(axis=0)
 
 gene_lengths = numpy.array([ x.length for x in by_gene ])
 
-normalized_genecounts = (genecounts * 1e8) / totals / gene_lengths[:,numpy.newaxis]
+normalized_genecounts = genecounts / gene_lengths[:,numpy.newaxis]
 
 out = {
   'chr':     [ x.chr          for x in by_gene ],
