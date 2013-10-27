@@ -212,7 +212,7 @@ d3.json(data_url, function(error, data) {
 
   var line = function(keys) {
     if(!keys) return
-    $("#selected-sample").text(keys.sort().join(", "))
+    $("#selected-sample").text(keys.join(", "))
 
     var lineFunction = d3.svg.line()
       .x(function(d) { return section_x(d) })
