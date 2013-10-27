@@ -96,7 +96,7 @@ d3.json("/data/ordered", function(error, data) {
 
   var zoom = d3.behavior.zoom()
     .x(section_x)
-    .scaleExtent([1, 30])
+    .scaleExtent([0.01, 100])
     .on("zoom", redraw)
 
   container
