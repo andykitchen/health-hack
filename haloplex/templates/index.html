@@ -5,50 +5,59 @@
     <script src="static/js/jquery-2.0.3.js"></script>
     <script src="static/js/purl.js"></script>
     <script src="static/js/chosen.jquery.js"></script>
+    <script src="static/js/lodash.js"></script>
+    <script src="static/js/d3.v3.js" charset="utf-8"></script>
     <script src="static/js/routing.js"></script>
   </head>
   <body>
-    <script src="static/js/lodash.js"></script>
-    <script src="static/js/d3.v3.js" charset="utf-8"></script>
-    <script src="static/js/main.js"></script>
-    <div id="search-form">
-      <form action="/" method="GET">
-        <fieldset>
-          <label>Z-Score</label>
-          <input id="z-score" type="checkbox" name="x" value="zscore" />
-        </fieldset>
-        <fieldset>
-          <label>Row Limit</label>
-          <select id="row-limit" name="c">
-            <option value=""></option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="500">500</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <label>Row Offset</label>
-          <input id="row-offset" type="text" name="s"/>
-          <div id="row-count">of <span id="row-count-value"></span> rows</div>
-        </fieldset>
-        <fieldset>
-          <label>Order</label>
-          <select id="order" name="o">
-            <option value=""></option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <label>Samples</label>
-          <select id="samples" name="i" multiple="multiple">
-          </select>
-        </fieldset>
-        <input type="submit" />
-      </form>
+    <div id="content">
+      <div id="main_visual">
+        <h1 id="title">Gene Machine's Haloplex</h1>
+        <div id="chart"></div>
+        <div>
+          <a href="">next</a>
+        </div>
+      </div>
+      <div id="search-form">
+        <form action="/" method="GET">
+          <fieldset>
+            <label>Z-Score</label>
+            <input id="z-score" type="checkbox" name="x" value="zscore" />
+          </fieldset>
+          <fieldset>
+            <label>Row Limit</label>
+            <select id="row-limit" name="c">
+              <option value=""></option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="500">500</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label>Row Offset</label>
+            <input id="row-offset" type="text" name="s"/>
+            <div id="row-count">of <span id="row-count-value"></span> rows</div>
+          </fieldset>
+          <fieldset>
+            <label>Order</label>
+            <select id="order" name="o">
+              <option value=""></option>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label>Samples</label>
+            <select id="samples" name="i" multiple="multiple">
+            </select>
+          </fieldset>
+          <input type="submit" />
+        </form>
+      </div>
     </div>
+    <script src="static/js/main.js"></script>
   </body>
 </html>

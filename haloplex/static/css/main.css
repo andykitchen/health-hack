@@ -5,6 +5,14 @@ body {
   background: #222;
 }
 
+#content {
+  width: 100%;
+}
+
+#main_visual {
+  float: left;
+}
+
 svg.main {
   background: #222;
 }
@@ -70,7 +78,7 @@ svg.main {
 
 svg.axis {
   position: fixed;
-  top: 0;
+  top: 80;
   left: 0;
   height: 100%;
   pointer-events: none;

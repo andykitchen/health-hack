@@ -10,8 +10,8 @@ var left_column_fader_width = 200;
 var left_label_padding = 20;
 var top_padding = 20;
 
-var svg = d3.select("body").append("svg");
-var axis_svg = d3.select("body").append("svg");
+var svg = d3.select("#chart").append("svg");
+var axis_svg = d3.select("#chart").append("svg");
 
 svg
   .attr("height", 0)
