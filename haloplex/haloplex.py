@@ -3,11 +3,12 @@ from flask import *
 import sys
 import os
 import pandas
+import re
 
 data = json.load(open('data/normalized_data.json', 'r'))
 
-metadata = pandas.DataFrame(data, columns = [ 'chr', 'start', 'end', 'gene' ])
-samples = pandas.DataFrame(data['samples'], columns = sorted(data['samples'].keys()))
+all_metadata = pandas.DataFrame(data, columns = [ 'chr', 'start', 'end', 'gene' ])
+all_samples = pandas.DataFrame(data['samples'], columns = sorted(data['samples'].keys()))
 
 
 
@@ -50,11 +51,32 @@ def ordered():
     except:
       return x
 
+  def chr_range(x):
+    patt = re.compile(r'^(\w+)(?::([0-9]+)-([0-9]+))?$')
+    m = patt.match(x)
+    if m is None:
+      return None
+    if m.group(2) is None:
+      return m.group(1), None, None
+    return m.group(1), int(m.group(2)), int(m.group(3))
+
   order = request.args.get('o', None)
   xform = request.args.get('x', None)
   start = maybe_int(request.args.get('s', None))
   count = maybe_int(request.args.get('c', None))
   sample_ids = [ x for x in request.args.get('i', '').split(',') if len(x) ]
+  chr_range = chr_range(request.args.get('r', ''))
+
+  samples = all_samples
+  metadata = all_metadata
+
+  if chr_range is not None:
+    filt = metadata.chr == chr_range[0]
+    if chr_range[1] is not None:
+      filt = filt & ~((metadata.end < chr_range[1]) | (metadata.start > chr_range[2]))
+
+    samples = samples.ix[filt]
+    metadata = metadata.ix[filt]
 
   if len(sample_ids):
     sample_ids = set(sample_ids) & set(samples.columns)
@@ -62,22 +84,19 @@ def ordered():
     sample_ids = set(samples.columns)
 
   if order == 'asc':
-    sort_order = list(samples.mean(axis=1).argsort())
+    sort_order = samples.index[samples.mean(axis=1).argsort()]
   elif order == 'desc':
-    sort_order = list(reversed(samples.mean(axis=1).argsort()))
+    sort_order = samples.index[reversed(samples.mean(axis=1).argsort())]
   else:
-    sort_order = range(len(metadata.chr))
+    sort_order = metadata.index
 
   if start is not None:
     sort_order = sort_order[start:]
   if count is not None:
     sort_order = sort_order[:count]
 
-
   if xform == 'zscore':
-    sample_data = samples.sub(samples.mean(axis=1),axis=0).div(samples.std(axis=1),axis=0)
-  else:
-    sample_data = samples
+    samples = samples.sub(samples.mean(axis=1),axis=0).div(samples.std(axis=1),axis=0)
 
   return jsonify(build_data(metadata.ix[sort_order], samples.ix[sort_order, sample_ids]))
 
