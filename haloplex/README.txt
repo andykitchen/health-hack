@@ -15,6 +15,9 @@ Supported routes:
 
 /static/*        -> static data
 
+/normalized_data.json
+                 -> the untouched normalized data (for backwards compat)
+
 /data/count      -> dataset row count
 
 returns:
