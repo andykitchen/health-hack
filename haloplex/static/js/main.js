@@ -19,9 +19,8 @@ axis_svg
   .attr("width",  width)
   .attr("class", "axis");
 
-d3.json("/data/ordered?o=asc", function(error, data) {
-  var section_count = Math.min(50, data.start.length);
-  // var section_count = data.start.length;
+d3.json("/data/ordered?o=dsc&c=50", function(error, data) {
+  var section_count = data.start.length;
 
   var gene = data.gene;
   var indicies = d3.range(section_count);
