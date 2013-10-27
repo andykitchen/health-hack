@@ -152,38 +152,38 @@ svg.axis {
   width: 80px !important;
 }
 
-.l_0 { stroke: #00007f; }
-.l_1 { stroke: #0000a3; }
-.l_2 { stroke: #0000c8; }
-.l_3 { stroke: #0000ec; }
-.l_4 { stroke: #0000ff; }
-.l_5 { stroke: #0020ff; }
-.l_6 { stroke: #0040ff; }
-.l_7 { stroke: #0060ff; }
-.l_8 { stroke: #0080ff; }
-.l_9 { stroke: #00a0ff; }
-.l_10 { stroke: #00c0ff; }
-.l_11 { stroke: #00e0fa; }
-.l_12 { stroke: #15ffe1; }
-.l_13 { stroke: #2fffc7; }
-.l_14 { stroke: #49ffad; }
-.l_15 { stroke: #63ff93; }
-.l_16 { stroke: #7cff79; }
-.l_17 { stroke: #96ff5f; }
-.l_18 { stroke: #b0ff46; }
-.l_19 { stroke: #caff2c; }
-.l_20 { stroke: #e4ff12; }
-.l_21 { stroke: #feed00; }
-.l_22 { stroke: #ffcf00; }
-.l_23 { stroke: #ffb100; }
-.l_24 { stroke: #ff9400; }
-.l_25 { stroke: #ff7600; }
-.l_26 { stroke: #ff5900; }
-.l_27 { stroke: #ff3b00; }
-.l_28 { stroke: #ff1d00; }
-.l_29 { stroke: #e80000; }
-.l_30 { stroke: #c30000; }
-.l_31 { stroke: #9f0000; }
+.l_0 { stroke: #7f00ff; }
+.l_1 { stroke: #6f19fe; }
+.l_2 { stroke: #5f31fd; }
+.l_3 { stroke: #4f4afc; }
+.l_4 { stroke: #3f61fa; }
+.l_5 { stroke: #2f78f7; }
+.l_6 { stroke: #1f8ef3; }
+.l_7 { stroke: #0fa2ef; }
+.l_8 { stroke: #00b4eb; }
+.l_9 { stroke: #10c5e6; }
+.l_10 { stroke: #20d4e0; }
+.l_11 { stroke: #30e1da; }
+.l_12 { stroke: #40ecd3; }
+.l_13 { stroke: #50f4cc; }
+.l_14 { stroke: #60fac4; }
+.l_15 { stroke: #70fdbc; }
+.l_16 { stroke: #80feb3; }
+.l_17 { stroke: #90fdaa; }
+.l_18 { stroke: #a0f9a1; }
+.l_19 { stroke: #b0f397; }
+.l_20 { stroke: #c0ea8c; }
+.l_21 { stroke: #d0df82; }
+.l_22 { stroke: #e0d277; }
+.l_23 { stroke: #f0c36c; }
+.l_24 { stroke: #ffb260; }
+.l_25 { stroke: #ff9f54; }
+.l_26 { stroke: #ff8b48; }
+.l_27 { stroke: #ff753c; }
+.l_28 { stroke: #ff5f30; }
+.l_29 { stroke: #ff4724; }
+.l_30 { stroke: #ff2e17; }
+.l_31 { stroke: #ff150a; }
 
 #selected-sample {
   color: red;
