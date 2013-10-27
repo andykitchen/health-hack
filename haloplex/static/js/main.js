@@ -239,5 +239,9 @@ $(function() {
 
   });
 
+  $.getJSON("/data/count", function(data) {
+    $('#row-count-value').text(data["count"]);
+  });
+
   set_default_form_values();
 });
