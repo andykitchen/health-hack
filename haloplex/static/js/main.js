@@ -21,7 +21,7 @@ axis_svg
   .attr("class", "axis");
 
 var data_url = transform_url(window.location.search);
-data_url = "/data/ordered?o=dsc&c=50&i=samp_01,samp_02";
+data_url = "/data/ordered?o=dsc&c=50";
 
 d3.json(data_url, function(error, data) {
   var section_count = data.start.length;
