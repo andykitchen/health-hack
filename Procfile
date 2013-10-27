@@ -1,1 +1,1 @@
-web: python haloplex/haloplex.py dummy.json
+web: python haloplex.py data/dummy.json
