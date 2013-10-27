@@ -245,3 +245,25 @@ $(function() {
 
   set_default_form_values();
 });
+
+function row_offset_prev() {
+  current = _.parseInt( $('#row-offset').val());
+  current = _.isNaN(current) ? 0 : current;
+  row_limit = _.parseInt( $('#row-limit').val());
+  row_limit = _.isNaN(row_limit) ? 10 : row_limit;
+  
+  offset = current > row_limit ? current - row_limit  : 0;
+  $('#row-offset').val( offset );
+}
+
+function row_offset_next() {
+  current = _.parseInt( $('#row-offset').val());
+  current = _.isNaN(current) ? 0 : current;
+  row_limit = _.parseInt( $('#row-limit').val());
+  row_limit = _.isNaN(row_limit) ? 10 : row_limit;
+  
+  row_count = $('#row-count-value').text();
+
+  offset = ((current + row_limit) < row_count) ? current + row_limit : row_count - 1;
+  $('#row-offset').val( offset );
+}

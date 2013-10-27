@@ -12,13 +12,12 @@
   <body>
     <div id="content">
       <div id="main_visual">
-        <h1 id="title">Gene Machine's Haloplex</h1>
         <div id="chart"></div>
         <div>
-          <a href="">next</a>
         </div>
       </div>
       <div id="search-form">
+        <h2 id="title">Gene Machine's Haloplex</h2>
         <form action="/" method="GET">
           <fieldset>
             <label>Z-Score</label>
@@ -27,18 +26,19 @@
           <fieldset>
             <label>Row Limit</label>
             <select id="row-limit" name="c">
-              <option value=""></option>
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
-              <option value="100">100</option>
+              <option value="100" selected>100</option>
               <option value="200">200</option>
               <option value="500">500</option>
             </select>
           </fieldset>
           <fieldset>
             <label>Row Offset</label>
+            <button onclick="row_offset_prev()">prev</button>
             <input id="row-offset" type="text" name="s"/>
+            <button onclick="row_offset_next()">next</button>
             <div id="row-count">of <span id="row-count-value"></span> rows</div>
           </fieldset>
           <fieldset>
