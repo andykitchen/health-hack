@@ -54,6 +54,12 @@ def ordered():
   xform = request.args.get('x', None)
   start = maybe_int(request.args.get('s', None))
   count = maybe_int(request.args.get('c', None))
+  sample_ids = request.args.get('i', '').split(',')
+
+  if len(sample_ids):
+    sample_ids = set(sample_ids) & set(samples.columns)
+  else:
+    sample_ids = set(samples.columns)
 
   if order == 'asc':
     sort_order = list(samples.mean(axis=1).argsort())
@@ -73,7 +79,7 @@ def ordered():
   else:
     sample_data = samples
 
-  return jsonify(build_data(metadata.ix[sort_order], samples.ix[sort_order]))
+  return jsonify(build_data(metadata.ix[sort_order], samples.ix[sort_order, sample_ids]))
 
 @app.route('/normalized_data.json')
 def return_data():
