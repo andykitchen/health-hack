@@ -7,6 +7,7 @@ var left_column_width = 0;
 var left_column_initial_offset = 200;
 var right_column_width = width - left_column_width;
 var left_column_fader_width = 200;
+var left_label_padding = 20;
 
 var svg = d3.select("body").append("svg");
 var axis_svg = d3.select("body").append("svg");
@@ -47,6 +48,21 @@ d3.json(data_url, function(error, data) {
     .domain([min, max/2])
     .range([left_column_initial_offset, right_column_width])
 
+  var fader_gradient = svg
+    .append("defs")
+    .append("linearGradient")
+    .attr("id", "fader-gradient")
+
+  fader_gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "#000")
+    .attr("stop-opacity", "1")
+
+  fader_gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "#000")
+    .attr("stop-opacity", "0")
+
   var container = svg
     .append("g")
     .attr("transform", "translate(0,20)")
@@ -76,8 +92,17 @@ d3.json(data_url, function(error, data) {
       .tickSize(-height)
       .orient("top");
 
+  var section_group = container.append("g").attr("class", "sections")
+
+  container.append("rect")
+    .attr("class", "fader")
+    .attr("width", left_column_fader_width)
+    .attr("height", height)
+
+  var section_labels_group = container.append("g").attr("class", "section-labels")
+
   var redraw = function() {
-    var sections = container.selectAll("g.section").data(indicies)
+    var sections = section_group.selectAll("g.section").data(indicies)
 
     sections.enter()
       .append("g")
@@ -85,6 +110,15 @@ d3.json(data_url, function(error, data) {
       .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
 
     sections.each(samples)
+
+    var section_labels = section_labels_group.selectAll("g.section-label").data(indicies)
+
+    section_labels.enter()
+      .append("g")
+      .attr("class", "section-label")
+      .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
+
+    section_labels.each(draw_section_labels)
 
     var axis_group = axis_svg.select("g.axis")
     if(axis_group.empty()) {
@@ -106,9 +140,8 @@ d3.json(data_url, function(error, data) {
     .call(zoom)
     .on("dblclick.zoom", null)
 
-  var samples = function(id, i) {
+  var draw_section_labels = function(id, i) {
     var elem = d3.select(this);
-
     var label = elem.select("text.label");
 
     if(label.empty()) {
@@ -117,8 +150,13 @@ d3.json(data_url, function(error, data) {
         .attr("class", "label")
         .attr("dy", "0.5ex")
         .text(gene[id])
+        .attr("x", left_label_padding)
         .attr("y", section_height / 2);
     }
+  }
+
+  var samples = function(id, i) {
+    var elem = d3.select(this);
 
     var samples_group = elem.select("g.samples")
     var right_column
@@ -156,11 +194,6 @@ d3.json(data_url, function(error, data) {
   };
 
   redraw()
-
-  container.append("rect")
-    .attr("class", "fader")
-    .attr("width", left_column_fader_width)
-    .attr("height", height)
 })
 
 }());
