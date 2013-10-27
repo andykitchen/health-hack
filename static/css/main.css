@@ -184,3 +184,7 @@ svg.axis {
 .l_29 { stroke: #e80000; }
 .l_30 { stroke: #c30000; }
 .l_31 { stroke: #9f0000; }
+
+#selected-sample {
+  color: red;
+}
