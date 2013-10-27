@@ -54,7 +54,7 @@ def ordered():
   xform = request.args.get('x', None)
   start = maybe_int(request.args.get('s', None))
   count = maybe_int(request.args.get('c', None))
-  sample_ids = request.args.get('i', '').split(',')
+  sample_ids = [ x for x in request.args.get('i', '').split(',') if len(x) ]
 
   if len(sample_ids):
     sample_ids = set(sample_ids) & set(samples.columns)
