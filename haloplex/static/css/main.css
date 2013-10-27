@@ -85,3 +85,10 @@ svg.axis {
   fill: red;
   opacity: 1;
 }
+
+.pick-line {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+  opacity: 0.5;
+}

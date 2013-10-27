@@ -1,6 +1,6 @@
 (function() {
 
-var width = 1024;
+var width = 800;
 
 var section_height = 20;
 var left_column_width = 0;
@@ -19,7 +19,7 @@ axis_svg
   .attr("width",  width)
   .attr("class", "axis");
 
-d3.json("normalized_data.json", function(error, data) {
+d3.json("/data/ordered", function(error, data) {
   var section_count = Math.min(50, data.start.length);
   // var section_count = data.start.length;
 
@@ -82,7 +82,6 @@ d3.json("normalized_data.json", function(error, data) {
       .attr("transform", function(id, i) { return "translate(0,"+(section_height * id)+")" })
 
     sections.each(samples)
-    line(current_sample)
 
     var axis_group = axis_svg.select("g.axis")
     if(axis_group.empty()) {
@@ -97,7 +96,7 @@ d3.json("normalized_data.json", function(error, data) {
 
   var zoom = d3.behavior.zoom()
     .x(section_x)
-    .scaleExtent([1, 30])
+    .scaleExtent([0.01, 100])
     .on("zoom", redraw)
 
   container
@@ -152,27 +151,6 @@ d3.json("normalized_data.json", function(error, data) {
       node.parentNode.appendChild(node)
     }
   };
-
-  var line = function(key) {
-    var lineFunction = d3.svg.line()
-      .x(function(d) { return section_x(d) })
-      .y(function(d, i) { return section_height * (i + 0.5) })
-      .interpolate("cardinal");
-
-    var path = container.select("path.pick-line")
-    if(path.empty()) { path = container.append("path").attr("class", "pick-line") }
-
-    if(key) {
-      path
-        .datum(data.samples[key])
-        .attr("d", lineFunction)
-        .attr("stroke", "red")
-        .attr("fill", "none")
-        .attr("stroke-width", "2px")
-    } else {
-      path.remove()
-    }
-  }
 
   redraw()
 })
