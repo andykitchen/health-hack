@@ -116,6 +116,10 @@ svg.axis {
   text-align: right;
 }
 
+#search-form .chosen-results li {
+  color: black;
+}
+
 #search-form fieldset {
   border-color: transparent;
 }
