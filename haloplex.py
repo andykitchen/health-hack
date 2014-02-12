@@ -5,7 +5,8 @@ import os
 import pandas
 import re
 import sys
-
+import logging
+logging.basicConfig(stream=sys.stderr)
 
 if len(sys.argv) > 1:
   data_path = sys.argv[1]
@@ -103,8 +104,8 @@ def ordered():
     sort_order = metadata.index
 
   if len(gene_ids):
-    sort_order = sort_order[sort_order.map(lambda x: x in gene_ids)]
-
+    sort_order = sort_order[sort_order.map(lambda x: metadata.gene[x] in gene_ids)]
+    
   if start is not None:
     sort_order = sort_order[start:]
   if count is not None:
