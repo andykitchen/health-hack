@@ -50,6 +50,10 @@ def count():
 def sample_ids():
   return jsonify(sample_ids=list(all_samples.columns))
 
+@app.route('/data/genes')
+def genes():
+  return jsonify(genes=list(all_metadata["gene"]))
+
 @app.route('/data/ordered')
 def ordered():
   def maybe_int(x):

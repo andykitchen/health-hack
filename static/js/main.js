@@ -250,7 +250,15 @@ $(function() {
 
     $('#samples').val( $.url().param("i") );
     $('#samples').chosen();
+  });
 
+  $.getJSON("/data/genes", function(data) {
+    _.each(data["genes"], function(gene) {
+      $("#genes").append('<option value="' + gene + '">' + gene + '</option>');
+    });
+
+    $('#genes').val( $.url().param("g") );
+    $('#genes').chosen();
   });
 
   $.getJSON("/data/count", function(data) {
