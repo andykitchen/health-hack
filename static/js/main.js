@@ -42,7 +42,7 @@ d3.json(data_url, function(error, data) {
     })
   })
 
-  var height = section_height * section_count;
+  var height = section_height * section_count + top_padding;
   svg.attr("height", height);
 
   var section_x = d3.scale.linear()
@@ -90,7 +90,7 @@ d3.json(data_url, function(error, data) {
 
   var xAxis = d3.svg.axis()
       .scale(section_x)
-      .tickSize(-height)
+      .tickSize(- (height - top_padding))
       .orient("top");
 
   var section_group = container.append("g").attr("class", "sections")
