@@ -53,7 +53,7 @@ def sample_ids():
 
 @app.route('/data/genes')
 def genes():
-  return jsonify(genes=list(all_metadata["gene"]))
+  return jsonify(genes=list(all_metadata.gene))
 
 @app.route('/data/ordered')
 def ordered():
