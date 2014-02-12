@@ -76,6 +76,7 @@ def ordered():
   start = maybe_int(request.args.get('s', None))
   count = maybe_int(request.args.get('c', None))
   sample_ids = [ x for x in request.args.get('i', '').split(',') if len(x) ]
+  gene_ids = set([ x for x in request.args.get('g', '').split(',') if len(x) ])
   chr_range = chr_range(request.args.get('r', ''))
 
   samples = all_samples
@@ -100,6 +101,9 @@ def ordered():
     sort_order = samples.index[list(reversed(samples.mean(axis=1).argsort()))]
   else:
     sort_order = metadata.index
+
+  if len(gene_ids):
+    sort_order = sort_order[sort_order.map(lambda x: x in gene_ids)]
 
   if start is not None:
     sort_order = sort_order[start:]
